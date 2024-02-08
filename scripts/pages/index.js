@@ -1,29 +1,25 @@
+var photographers = [];
+    
     async function getPhotographers() {
-        // Ceci est un exemple de données pour avoir un affichage de photographes de test dès le démarrage du projet, 
-        // mais il sera à remplacer avec une requête sur le fichier JSON en utilisant "fetch".
-        let photographers = [
-            {
-                "name": "Ma data test",
-                "id": 1,
-                "city": "Paris",
-                "country": "France",
-                "tagline": "Ceci est ma data test",
-                "price": 400,
-                "portrait": "account.png"
-            },
-            {
-                "name": "Autre data test",
-                "id": 2,
-                "city": "Londres",
-                "country": "UK",
-                "tagline": "Ceci est ma data test 2",
-                "price": 500,
-                "portrait": "account.png"
-            },
-        ]
-        // et bien retourner le tableau photographers seulement une fois récupéré
-        return ({
-            photographers: [...photographers, ...photographers, ...photographers]})
+
+        try {
+            // Update the path to '../data/photographers.json'
+            const response = await fetch('../data/photographers.json');
+        
+            // Check if the request was successful (status code 200)
+            if (!response.ok) {
+              throw new Error(`Error: ${response.status}`);
+            }
+        
+            // Parse the JSON response and store it in a variable
+            const photographers = await response.json();
+        
+            return photographers;
+          } catch (error) {
+            console.error('Error fetching photographers:', error.message);
+            // Handle the error as needed
+            return null; // Return null in case of an error
+          }
     }
 
     async function displayData(photographers) {

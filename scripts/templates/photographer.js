@@ -1,7 +1,7 @@
 function photographerTemplate(data) {
     const { name, portrait } = data;
 
-    const picture = `assets/photographers/${portrait}`;
+    const picture = `../assets/photographers/${portrait}`;
 
     function getUserCardDOM() {
         const article = document.createElement( 'article' );
@@ -13,5 +13,5 @@ function photographerTemplate(data) {
         article.appendChild(h2);
         return (article);
     }
-    return { name, picture, getUserCardDOM }
+    return { name, picture, getUserCardDOM } 
 }
