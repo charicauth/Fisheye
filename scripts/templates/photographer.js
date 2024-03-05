@@ -5,12 +5,15 @@ function photographerTemplate(data) {
 
     function getUserCardDOM() {
         const article = document.createElement( 'article' );
-        const img = document.createElement( 'img' );
-        img.setAttribute("src", picture)
+        const imgContainer = document.createElement( 'div' );
+        const link = document.createElement( 'a' );
+        link.setAttribute( 'href', '/photographer.html?name=' + name)
         const h2 = document.createElement( 'h2' );
         h2.textContent = name;
-        article.appendChild(img);
-        article.appendChild(h2);
+        imgContainer.style.backgroundImage = 'url(' + picture + ')';
+        link.appendChild(imgContainer);
+        link.appendChild(h2);
+        article.appendChild(link);
         return (article);
     }
     return { name, picture, getUserCardDOM } 
