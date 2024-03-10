@@ -74,3 +74,45 @@ form input {
     border: none;
     border-radius: 5px;
 }
+
+header {
+    margin-top: 2rem;
+    margin-bottom: 4rem;
+}
+
+
+.photograph-header {
+    padding: 0rem 4rem;
+    display : flex;
+    flex-flow: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4rem;
+}
+
+
+.photograph-header .profile-info h1{ 
+    margin: 0px;
+    color: #D3573C;
+    font-size: 3.5rem;
+}
+.photograph-header .profile-info h2{ 
+    color: #901C1C;
+    font-size: 1.6rem;
+}
+.photograph-header .profile-info p{ 
+    font-size: 1rem;
+}
+
+.photograph-header .profile-picture  {
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}

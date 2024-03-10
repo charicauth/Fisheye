@@ -1,57 +1,36 @@
 const urlParams = new URLSearchParams(window.location.search);
 
 var profileName = urlParams.get('name');
-var photographer = [];
-var photographerData = [];
+
+const photographer = new Photographer(profileName);
     
     async function getPhotographerData() {
-        try {
-            // Update the path to '../data/photographers.json'
-            const response = await fetch('../data/photographers.json');
+       const photographerProfile = await photographer.profile;
+       const photographerWork = await photographer.work;
 
-            if (!response.ok) {
-                throw new Error(`Error: ${response.status}`);
-            }
-
-            const data = await response.json();
-            photographers = data.photographers;
-
-            const profile = photographers.find(photographer => photographer.name === profileName);
-
-            if (profile) {
-                const profileData = data.media.filter(media => media.photographerId === profile.id);
-                photographer = profile;
-                photographerData = profileData;
-                console.log(profileData);
-                console.log(profile);
-            } else {
-                console.log('Profile not found');
-            }
-
-            return (photographers, photographerData);
-        } catch (error) {
-            console.error('Error fetching photographers:', error.message);
-            return null;
-        }
+       const data = { "profile" : photographerProfile, "work" : photographerWork};
+       
+       return data;
     }
 
-    async function displayData(photographer, photographerData) {
-        // const photographersSection = document.querySelector(".photographer_section");
-        const photographHeader = document.getElementById("photographer_header");
-        
-        const photographerModel = photographerTemplate(photographer, photographerData);
+    async function displayData(profile, work) {
+        const photographHeader =document.getElementById('photograph-header');
+        const profileImg = document.getElementById('profile-picture');
 
-        photographHeader.appendChild(photographProfile);
+        const profileInformations = photographer.displayProfile(profile);
+        profileImg.style.backgroundImage = 'url(../assets/photographers/' + profile.portrait + ')';
 
-        const photographProfile = photographerModel.getPhotographHeader();
 
-        
+        photographHeader.prepend(profileInformations);
+        profileImg.appendChild(img);
     }
+
 
     async function init() {
         // Récupère les datas des photographes
-        const { photographer , photographerData } = await getPhotographerData();
-        displayData(photographer);
+        const { profile , work } = await getPhotographerData();
+        displayData(profile, work);
+
     }
     
     init();

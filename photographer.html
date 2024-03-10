@@ -9,13 +9,17 @@
   </head>
   <body>
     <header>
-      <img src="assets/images/logo.png" class="logo" />
+      <a href="/">
+        <img src="assets/images/logo.png" class="logo" />
+      </a>
     </header>
     <main id="main">
-      <div class="photograph-header" id="photograph_header">
-        <div id="contact-info"></div>
+      <div class="photograph-header" id="photograph-header">
         <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
-        <div id="profile-picture"></div>
+        <div class= "profile-picture" id="profile-picture">
+        </div>
+          
+        </div>
       </div>
     </main>
     <div id="contact_modal">
@@ -33,6 +37,7 @@
 				</form>
 			</div>
 		</div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="/scripts/templates/profile.js"></script>
     <script src="/scripts/pages/photographer.js"></script>
     <script src="/scripts/utils/contactForm.js"></script>

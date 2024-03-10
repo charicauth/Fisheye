@@ -14,6 +14,7 @@ var photographers = [];
             // Parse the JSON response and store it in a variable
             const photographers = await response.json();
 
+            console.log(photographers);
             return photographers;
           } catch (error) {
             console.error('Error fetching photographers:', error.message);
