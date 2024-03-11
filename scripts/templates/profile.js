@@ -62,8 +62,64 @@ class Photographer {
 
         return (container);
     }
+
+    displayWork(work) {
+        const workContainer = document.createElement('div', {class: 'photo-container'});
+        const workDummyChildNb = work.length % 3;
+
+        work.forEach(piece => {
+
+            const container = document.createElement('div', {class: 'photo-container'});
+            container.setAttribute('class', 'photo-container');
+
+            var author = this.name.split(' ')[0].replace('-', ' ');
+            
+            const videoSrc = document.createElement('source');
+            
+            const title = document.createElement('h2');
+            const likes = document.createElement('p');
+            const heartIcon = document.createElement('i');
+            heartIcon.setAttribute('class', 'fa-solid fa-heart');
+
+            title.textContent = piece.title;
+            likes.textContent = piece.likes;
+            
+            likes.appendChild(heartIcon);
+            container.appendChild(title);
+            container.appendChild(likes);
+
+            if (piece.video) {
+                const imgPath = '../assets/images/' + author.replace(' ', '%20') + '/' + piece.video;
+                const video = document.createElement('video');
+                video.setAttribute('width', '100%');
+                video.setAttribute('class', 'video');
+                videoSrc.setAttribute('src', imgPath );
+                videoSrc.setAttribute('type', 'video/mp4');
+                video.appendChild(videoSrc);
+                container.prepend(video);
+                workContainer.appendChild(container);
+            }
+            if (piece.image) {
+                const imgPath = '../assets/images/' + author.replace(' ', '%20') + '/' + piece.image;
+                const photo = document.createElement('div');
+                photo.setAttribute('class', 'photo');
+                photo.style.backgroundImage = 'url(' + imgPath + ')';
+                container.prepend(photo);
+                workContainer.prepend(container);
+            }
+        });
+
+        if ( workDummyChildNb == 2) {
+            const workDummyChild = document.createElement('div', {class: 'photo-container dummy-child'});
+            workDummyChild.setAttribute('class', 'photo-container dummy-child');
+            workContainer.appendChild(workDummyChild);
+        }
+
+        return (workContainer);
+    }
     
 }
+
 
 
 // function photographerTemplate() {

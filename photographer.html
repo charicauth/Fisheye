@@ -2,9 +2,10 @@
 <html>
   <head>
     <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <meta charset="utf-8">
+    <meta ch0px 0px 0px 0px;0px 0px 0px;t="utf-8">
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Fisheye - photographe </title>
   </head>
   <body>
@@ -13,31 +14,58 @@
         <img src="assets/images/logo.png" class="logo" />
       </a>
     </header>
-    <main id="main">
+    <main id="main" class="photographer-main">
       <div class="photograph-header" id="photograph-header">
         <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
         <div class= "profile-picture" id="profile-picture">
         </div>
-          
+      </div>
+      <div class="photographer-work">
+        <div class="work-filter">
+          <P>Trier par</P>
+          <select class="selectpicker" name="work-filter" id="work-filter">
+            <option value="popularité" id="option1">Popularité</option>
+            <option value="date" id="option2">Date</option>
+            <option value="titre" id="option3">Titre</option>
+          </select>
         </div>
+        <div id="work"></div>
       </div>
     </main>
+    <div class="price_and_likes">
+      <p class="likes" id="likes"><i class="fa-solid fa-heart"></i></p>
+      <p class="price-tag" id="price-tag"></p>
+    </div>
     <div id="contact_modal">
 			<div class="modal">
 				<header>
           <h2>Contactez-moi</h2>
           <img src="assets/icons/close.svg" onclick="closeModal()" />
         </header>
+        <h2 id="modalPhotographerName"></h2>
 				<form>
 					<div>
-						<label>Prénom</label>
-						<input />
+						<label for="prenom">Prénom</label>
+						<input type="text" name="prenom" id="prenom" required/>
 					</div>
-          <button class="contact_button">Envoyer</button>
+					<div>
+						<label for="nom">Nom</label>
+						<input type="text" name="nom" id="nom" required/>
+					</div>
+					<div>
+						<label for="email">Email</label>
+						<input type="email" name="email" id="email" required/>
+					</div>
+					<div>
+						<label for="message">Votre message</label>
+						<input type="textarea" name="message" id="message" required/>
+					</div>
+          <button class="contact_button" name="send">Envoyer</button>
 				</form>
 			</div>
 		</div>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    
+
     <script src="/scripts/templates/profile.js"></script>
     <script src="/scripts/pages/photographer.js"></script>
     <script src="/scripts/utils/contactForm.js"></script>

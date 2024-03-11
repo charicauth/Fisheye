@@ -2,7 +2,7 @@
 
 body {
     font-family: "DM Sans", sans-serif;
-    margin: 0;
+    margin: 0rem 6.5rem;
 }
 
 
@@ -21,7 +21,6 @@ h1 {
 
 .logo {
     height: 50px;
-    margin-left: 100px;
 }
 
 .photographer_section {
@@ -32,6 +31,7 @@ h1 {
 }
 
 .photographer_section article {
+    width: 500px;
     justify-self: center;
     display: flex;
     justify-content: center;
@@ -40,6 +40,8 @@ h1 {
 }
 
 .photographer_section article a {
+    padding: none ;
+    width: 100%;
     justify-self: center;
     display: flex;
     justify-content: center;
@@ -57,7 +59,6 @@ h1 {
 
     padding: 0px;
     border-radius: 100%;
-    overflow: hidden;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
@@ -66,11 +67,33 @@ h1 {
 
 .photographer_section article h2 {
     color: #D3573C;
-    font-size: 36px;
+    font-size: 2rem;
+    
 }
 
-.photographer_section article img {
-    width: 100%;
-    padding: 0px;
+.photographer-infos {
+    padding: none !;
+    width: 100% !important;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    margin-top: -4.5rem;
+}
 
+.photographer-infos h3 {
+    color: #901C1C;
+    font-weight: 600;
+    margin: 0px;
+    font-size: 1rem;
+}
+
+.photographer-infos p {
+    text-align: center;
+    color: #000;
+    margin: .5rem;
+    font-size: .9rem;
+}
+
+.photographer-price {
+    font-weight: 200;
 }

@@ -14,15 +14,23 @@ const photographer = new Photographer(profileName);
     }
 
     async function displayData(profile, work) {
-        const photographHeader =document.getElementById('photograph-header');
+        const photographerHeader =document.getElementById('photograph-header');
+        const photographerWork =document.getElementById('work');
         const profileImg = document.getElementById('profile-picture');
+        const nbOfLikes = document.getElementById('likes');
+        const price = document.getElementById('price-tag');
+        const modal = document.getElementById('modalPhotographerName');
 
         const profileInformations = photographer.displayProfile(profile);
+        const photographWork = photographer.displayWork(work);
+        
+        photographerHeader.prepend(profileInformations);
+        photographerWork.append(photographWork);
         profileImg.style.backgroundImage = 'url(../assets/photographers/' + profile.portrait + ')';
+        nbOfLikes.prepend('297 081');
+        price.textContent = profile.price + ' €/ Jour ';
+        modal.textContent = profile.name;
 
-
-        photographHeader.prepend(profileInformations);
-        profileImg.appendChild(img);
     }
 
 
