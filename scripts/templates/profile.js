@@ -89,7 +89,7 @@ class Photographer {
             container.appendChild(likes);
 
             if (piece.video) {
-                const imgPath = '../assets/images/' + author.replace(' ', '%20') + '/' + piece.video;
+                const imgPath = '/assets/images/' + author.replace(' ', '%20') + '/' + piece.video;
                 const video = document.createElement('video');
                 video.setAttribute('width', '100%');
                 video.setAttribute('class', 'video');
@@ -100,7 +100,7 @@ class Photographer {
                 workContainer.appendChild(container);
             }
             if (piece.image) {
-                const imgPath = '../assets/images/' + author.replace(' ', '%20') + '/' + piece.image;
+                const imgPath = '/assets/images/' + author.replace(' ', '%20') + '/' + piece.image;
                 const photo = document.createElement('div');
                 photo.setAttribute('class', 'photo');
                 photo.style.backgroundImage = 'url(' + imgPath + ')';
