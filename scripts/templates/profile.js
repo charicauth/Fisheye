@@ -71,10 +71,9 @@ class Photographer {
 
             const container = document.createElement('div', {class: 'photo-container'});
             container.setAttribute('class', 'photo-container');
+            container.setAttribute('onclick', 'openCloseUpView(event)');
 
             var author = this.name.split(' ')[0].replace('-', ' ');
-            
-            const videoSrc = document.createElement('source');
             
             const title = document.createElement('h2');
             const likes = document.createElement('p');
@@ -91,12 +90,14 @@ class Photographer {
             if (piece.video) {
                 const imgPath = '/assets/images/' + author.replace(' ', '%20') + '/' + piece.video;
                 const video = document.createElement('video');
-                video.setAttribute('width', '100%');
+                video.setAttribute('type', 'video/mp4');
                 video.setAttribute('class', 'video');
-                videoSrc.setAttribute('src', imgPath );
-                videoSrc.setAttribute('type', 'video/mp4');
-                video.appendChild(videoSrc);
+                video.setAttribute('src', imgPath );
+                video.setAttribute('type', 'video/mp4');
                 container.prepend(video);
+                container.setAttribute('data-url', imgPath);
+                container.setAttribute('data-category', 'video');
+                container.setAttribute('data-title', piece.title);
                 workContainer.appendChild(container);
             }
             if (piece.image) {
@@ -105,6 +106,9 @@ class Photographer {
                 photo.setAttribute('class', 'photo');
                 photo.style.backgroundImage = 'url(' + imgPath + ')';
                 container.prepend(photo);
+                container.setAttribute('data-url', imgPath);
+                container.setAttribute('data-category', 'picture');
+                container.setAttribute('data-title', piece.title);
                 workContainer.prepend(container);
             }
         });

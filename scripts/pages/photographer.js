@@ -26,6 +26,7 @@ const photographer = new Photographer(profileName);
         
         photographerHeader.prepend(profileInformations);
         photographerWork.append(photographWork);
+        profileImg.setAttribute('name', profile.name);
         profileImg.style.backgroundImage = 'url(../assets/photographers/' + profile.portrait + ')';
         nbOfLikes.prepend('297 081');
         price.textContent = profile.price + ' €/ Jour ';

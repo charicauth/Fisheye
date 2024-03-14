@@ -10,16 +10,18 @@
   </head>
   <body>
     <header>
-      <a href="/">
-        <img src="assets/images/logo.png" class="logo" />
+      <a href="./index.html">
+        <img src="./assets/images/logo.png" class="logo" alt="Fisheye Home page"/>
       </a>
     </header>
     <main id="main" class="photographer-main">
+
       <div class="photograph-header" id="photograph-header">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+        <button name="Contact Me" class="contact_button" onclick="displayModal()">Contactez-moi</button>
         <div class= "profile-picture" id="profile-picture">
         </div>
       </div>
+
       <div class="photographer-work">
         <div class="work-filter">
           <P>Trier par</P>
@@ -31,11 +33,27 @@
         </div>
         <div id="work"></div>
       </div>
+
+      <div id="closeUpView" aria-label=”image-closeup-view”>
+        <div class="closeUpImgView" id="closeUpImgView">
+          <a id="previous" name="previous-image" onclick="previousImg()"><i class="fa-solid fa-angle-left"></i></a>
+          <div class="closeUpImg-container">
+            <img id="closeUpImg">
+            <video id="closeUpVideo"></video>
+            <h2 id="closeUpImgTitle" class="closeUpImgTitle"></h2>
+          </div>
+          <a id="next" name="next-image" onclick="nextImg()"><i class="fa-solid fa-angle-right"></i></a>
+        </div>
+        <button class="closeDialog" name="closeDialog" onclick="closeDialog()">
+          <i class="fa-solid fa-x"></i>
+        </button>
+      </div>
+
+      <div class="price_and_likes" id="island">
+        <p class="likes" id="likes"><i class="fa-solid fa-heart"></i></p>
+        <p class="price-tag" id="price-tag"></p>
+      </div>
     </main>
-    <div class="price_and_likes" id="island">
-      <p class="likes" id="likes"><i class="fa-solid fa-heart"></i></p>
-      <p class="price-tag" id="price-tag"></p>
-    </div>
     <div id="contact_modal">
 			<div class="modal">
 				<header>
@@ -65,9 +83,9 @@
 			</div>
 		</div>
     
-
     <script src="/scripts/templates/profile.js"></script>
     <script src="/scripts/pages/photographer.js"></script>
+    <script src="scripts/utils/closeUpView.js"></script>
     <script src="/scripts/utils/contactForm.js"></script>
   </body>
 </html>

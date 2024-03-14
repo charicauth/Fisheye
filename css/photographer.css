@@ -287,3 +287,78 @@ select option:checked {
     font-weight: 600;
 }
 
+
+#closeUpView {
+    display: none;
+    position: fixed;
+    top: 0rem;
+    left: 0rem;
+    z-index: 2000;
+    background-color: white;
+    width: 100%;
+    height: 100%;
+
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+
+}
+
+#closeUpImgView {
+    width: 100%;
+    padding-left: 6.5rem;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: center;
+    height: 70vh;
+}
+
+.fa-x {
+    font-size: 2rem;
+    color: #901C1C;
+    margin-top: 6.5rem;
+    margin-right: 6.5rem;
+    margin-left: -2rem;
+}
+
+#previous, #next {
+    width: 10%;
+    font-size: 2rem;
+    color: #901C1C;
+} 
+#next {
+    text-align: right;
+}
+
+#closeUpImg {
+    height: 100%;
+}
+
+#closeUpVideo {
+    width: 100%;
+}
+
+#closeUpVideo {
+    display: none;
+}
+
+.closeUpImg-container {
+    width: 80vw;
+    height: 90vh;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.closeDialog {
+    all: unset;
+    align-self: baseline;
+}
+
+.closeUpImgTitle {
+    width: 100%;
+    align-self: flex-start;
+    color: #901C1C;
+}
