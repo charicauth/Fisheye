@@ -326,7 +326,13 @@ select option:checked {
     width: 10%;
     font-size: 2rem;
     color: #901C1C;
+    cursor: pointer;
 } 
+
+#previous:hover, #next:hover {
+    opacity: .5;
+}
+
 #next {
     text-align: right;
 }

@@ -35,7 +35,7 @@ function openCloseUpView (event) {
 
 function nextImg () {
     index += 1;
-    let max = imgs.length - 2;
+    let max = imgs.length - 1;
     if (index > max) {
         index = 0;
     }
@@ -59,7 +59,7 @@ function nextImg () {
 
 function previousImg () {
     index -= 1;
-    let max = imgs.length - 2;
+    let max = imgs.length - 1;
     if (index < 0) {
         index = max;
     }
