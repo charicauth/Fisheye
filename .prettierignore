@@ -1,0 +1,11 @@
+# Ignore artifacts:
+
+/assets
+/data
+/node_modules
+
+package-lock.json
+package.json
+
+build
+coverage

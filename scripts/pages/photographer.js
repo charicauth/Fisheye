@@ -28,12 +28,11 @@ const photographer = new Photographer(profileName);
         photographerWork.append(photographWork);
         profileImg.setAttribute('name', profile.name);
         profileImg.style.backgroundImage = 'url(../assets/photographers/' + profile.portrait + ')';
-        nbOfLikes.prepend('297 081');
+        nbOfLikes.prepend(photographer.getTotalOfLikes(work));
         price.textContent = profile.price + ' €/ Jour ';
         modal.textContent = profile.name;
 
     }
-
 
     async function init() {
         // Récupère les datas des photographes

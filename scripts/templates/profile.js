@@ -71,14 +71,15 @@ class Photographer {
 
             const container = document.createElement('div', {class: 'photo-container'});
             container.setAttribute('class', 'photo-container');
-            container.setAttribute('onclick', 'openCloseUpView(event)');
 
             var author = this.name.split(' ')[0].replace('-', ' ');
             
             const title = document.createElement('h2');
             const likes = document.createElement('p');
+            likes.setAttribute('data-liked', 'false');
             const heartIcon = document.createElement('i');
             heartIcon.setAttribute('class', 'fa-solid fa-heart');
+            heartIcon.setAttribute('onclick', 'like(event)');
 
             title.textContent = piece.title;
             likes.textContent = piece.likes;
@@ -90,88 +91,44 @@ class Photographer {
             if (piece.video) {
                 const imgPath = '/assets/images/' + author.replace(' ', '%20') + '/' + piece.video;
                 const video = document.createElement('video');
+                video.setAttribute('onclick', 'openCloseUpView(event)');
                 video.setAttribute('type', 'video/mp4');
                 video.setAttribute('class', 'video');
                 video.setAttribute('src', imgPath );
                 video.setAttribute('type', 'video/mp4');
+                video.setAttribute('data-url', imgPath);
+                video.setAttribute('data-category', 'video');
+                video.setAttribute('data-title', piece.title);
                 container.prepend(video);
-                container.setAttribute('data-url', imgPath);
-                container.setAttribute('data-category', 'video');
-                container.setAttribute('data-title', piece.title);
                 workContainer.appendChild(container);
             }
             if (piece.image) {
                 const imgPath = '/assets/images/' + author.replace(' ', '%20') + '/' + piece.image;
                 const photo = document.createElement('div');
+                photo.setAttribute('onclick', 'openCloseUpView(event)')
                 photo.setAttribute('class', 'photo');
+                photo.setAttribute('data-url', imgPath);
+                photo.setAttribute('data-category', 'picture');
+                photo.setAttribute('data-title', piece.title);
                 photo.style.backgroundImage = 'url(' + imgPath + ')';
                 container.prepend(photo);
-                container.setAttribute('data-url', imgPath);
-                container.setAttribute('data-category', 'picture');
-                container.setAttribute('data-title', piece.title);
                 workContainer.prepend(container);
             }
         });
 
         if ( workDummyChildNb == 2) {
-            const workDummyChild = document.createElement('div', {class: 'photo-container dummy-child'});
-            workDummyChild.setAttribute('class', 'photo-container dummy-child');
+            const workDummyChild = document.createElement('div');
+            workDummyChild.setAttribute('class', 'dummy-child photo-container');
             workContainer.appendChild(workDummyChild);
         }
 
         return (workContainer);
     }
+
+    getTotalOfLikes(work) {
+        var totalOflikes = 0;
+        work.forEach( piece => totalOflikes += piece.likes);
+        return totalOflikes;
+    }
     
 }
-
-
-
-// function photographerTemplate() {
-//     const { name, city, price, country, tagline } = photographer;
-//     // const name = photographer.name;
-//     // const city = photographer.city;
-//     // const price = photographer.price;
-//     // const country = photographer.country;
-//     // const tagline = photographer.tagline;
-//     const picture = `../assets/photographers/${photographer.portait}`;
-    
-
-//     function getPhotographHeader () {
-
-//         // Definition des elements et de leurs attributs et valeurs. 
-//         const profileDataContainer = document.createElement( 'div' );
-//         profileDataContainer.setAttribute('id', 'profileInformations');
-
-//         const profileName = document.createElement( 'h1' );
-//         profileName.setAttribute('id', 'profileName');
-//         profileName.textContent = name;
-
-//         const profileLocationContainer = document.createElement( 'div' );
-//         profileLocationContainer.setAttribute('id', 'ProfileLocationContainer');
-
-//         const profileLocation = document.createElement( 'h2' );
-//         profileLocation.setAttribute('id', 'profileLocation');
-//         profileLocation.textContent = city + ', ' + country;
-
-//         const profileTagline = document.createElement( 'p' );
-//         profileTagline.setAttribute('id', 'profileTagline');
-//         profileTagline.textContent = tagline;
-
-//         // gestion de l'image de profile
-//         const imgContainer = document.createElement( 'div' );
-//         imgContainer.setAttribute( 'id' , 'profilePicture');
-//         imgContainer.style.backgroundImage = 'url(' + picture + ')';
-
-//         // Composition des elements
-//         profileLocationContainer.appendChild(profileLocation);
-//         profileLocationContainer.appendChild(profileTagline);
-
-//         profileDataContainer.appendChild(profileName);
-//         profileDataContainer.appendChild(profileLocationContainer);
-
-//         return (profileDataContainer , imgContainer);
-        
-
-//     }
-//     return { price , getPhotographHeader } 
-// }
