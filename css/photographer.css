@@ -145,10 +145,10 @@ header {
 
 .work-filter {
     display: inline-flex;
+    align-items: center;
 }
 
-.work-filter p {
-    width: fit-content;
+.work-filter label {
     margin-right: 2rem;
 }
 
@@ -254,7 +254,7 @@ select option:checked {
     margin: 0;
 }
 
-.dummy-child {
+#dummy-child {
     visibility: hidden;
 }
 

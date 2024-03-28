@@ -63,14 +63,18 @@ class Photographer {
         return (container);
     }
 
-    displayWork(work) {
+    displayWork(work) { 
+
+        let sortedWork = this.sortByPopularity(work);
+
         const workContainer = document.createElement('div', {class: 'photo-container'});
         const workDummyChildNb = work.length % 3;
 
-        work.forEach(piece => {
+        sortedWork.forEach(piece => {
 
             const container = document.createElement('div', {class: 'photo-container'});
             container.setAttribute('class', 'photo-container');
+            container.setAttribute('data-date', piece.date);
 
             var author = this.name.split(' ')[0].replace('-', ' ');
             
@@ -112,13 +116,14 @@ class Photographer {
                 photo.setAttribute('data-title', piece.title);
                 photo.style.backgroundImage = 'url(' + imgPath + ')';
                 container.prepend(photo);
-                workContainer.prepend(container);
+                workContainer.appendChild(container);
             }
         });
 
         if ( workDummyChildNb == 2) {
             const workDummyChild = document.createElement('div');
-            workDummyChild.setAttribute('class', 'dummy-child photo-container');
+            workDummyChild.setAttribute('class', 'photo-container');
+            workDummyChild.setAttribute('id', 'dummy-child');
             workContainer.appendChild(workDummyChild);
         }
 
@@ -129,6 +134,11 @@ class Photographer {
         var totalOflikes = 0;
         work.forEach( piece => totalOflikes += piece.likes);
         return totalOflikes;
+    }
+
+    sortByPopularity(work) {
+        let workArray = Array.from(work);
+        return workArray;
     }
     
 }

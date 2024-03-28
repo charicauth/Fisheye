@@ -8,18 +8,18 @@ function like(event) {
     const heart = event.currentTarget;
     const heartParent = heart.parentElement;
 
-    var nbOfHearts = parseInt(heart.parentElement.textContent);
+    var nbOfHearts = parseInt(heartParent.textContent);
 
-    if (heartParent.dataset.liked == "true") {
+    if (heartParent.dataset.liked == 'true') {
         likesUpdate('dec');
         heartParent.textContent = nbOfHearts - 1;
-        heartParent.appendChild(heartIcon);
-        heartParent.dataset.liked = "false";
-    } else if (heartParent.dataset.liked == "false") {
+        heartParent.appendChild(heartIcon.cloneNode(true));
+        heartParent.dataset.liked = 'false';
+    } else if (heartParent.dataset.liked == 'false') {
         likesUpdate('inc');
         heartParent.textContent = nbOfHearts + 1;
-        heartParent.appendChild(heartIcon);
-        heartParent.dataset.liked = "true";
+        heartParent.appendChild(heartIcon.cloneNode(true));
+        heartParent.dataset.liked = 'true';
     }
 }
 

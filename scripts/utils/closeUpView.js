@@ -8,7 +8,7 @@ const imgs = document.getElementsByClassName('photo-container');
 let index = 0;
 
 function checkDummy() {
-    var check = document.querySelector('.dummy-child');
+    var check = document.getElementById('dummy-child');
     if(check) {
         return true;
     }
