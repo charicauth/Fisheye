@@ -138,6 +138,9 @@ class Photographer {
 
     sortByPopularity(work) {
         let workArray = Array.from(work);
+        workArray.sort((a, b) => {
+            return b.likes - a.likes;
+        });
         return workArray;
     }
     
