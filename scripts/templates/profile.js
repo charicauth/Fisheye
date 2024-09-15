@@ -47,24 +47,40 @@ class Photographer {
   }
 
   displayProfile (profile) {
+    // Create the name element
     const name = document.createElement('h1')
     name.textContent = profile.name
+
+    // Create the location element
     const location = document.createElement('h2')
     location.textContent = profile.city + ', ' + profile.country
+
+    // Create the tagline element
     const tagline = document.createElement('p')
     tagline.textContent = profile.tagline
+
+    // Create the profile container
     const container = document.createElement('div')
     container.setAttribute('id', 'profile-info')
     container.setAttribute('class', 'profile-info')
+    container.setAttribute('role', 'region') // Define the container as a landmark region
+    container.setAttribute('aria-labelledby', 'profile-name') // Associate the container with the name heading
+    container.setAttribute('aria-describedby', 'profile-tagline') // Associate the container with the tagline description
+
+    // Add accessible IDs for ARIA references
+    name.setAttribute('id', 'profile-name')
+    tagline.setAttribute('id', 'profile-tagline')
+
+    // Append the elements to the container
     container.appendChild(name)
     container.appendChild(location)
     container.appendChild(tagline)
 
-    return (container)
+    return container
   }
 
-  displayWork (work) {
-    const sortedWork = this.sortByPopularity(work)
+  displayWork (work, filter = 'popularité') {
+    const sortedWork = this.sortWork(work, filter)
 
     const workContainer = document.createElement('div', { class: 'photo-container' })
     const workDummyChildNb = work.length % 3
@@ -79,8 +95,21 @@ class Photographer {
       const title = document.createElement('h2')
       const likes = document.createElement('p')
       likes.setAttribute('data-liked', 'false')
+
+      // Add aria-live for live updates on likes count
+      likes.setAttribute('aria-live', 'polite')
+
       const heartIcon = document.createElement('i')
       heartIcon.setAttribute('class', 'fa-solid fa-heart')
+      heartIcon.setAttribute('role', 'button') // Add role button for screen readers
+      heartIcon.setAttribute('tabindex', '0') // Ensure it’s focusable by keyboard
+      heartIcon.setAttribute('aria-label', 'Like') // Add aria-label for accessibility
+      heartIcon.addEventListener('keydown', function (e) { // Support keyboard interactions
+        if (e.key === 'Enter') {
+          // eslint-disable-next-line no-undef
+          like(e)
+        }
+      })
       heartIcon.setAttribute('onclick', 'like(event)')
 
       title.textContent = piece.title
@@ -101,9 +130,23 @@ class Photographer {
         video.setAttribute('data-url', imgPath)
         video.setAttribute('data-category', 'video')
         video.setAttribute('data-title', piece.title)
+
+        // Add accessible video attributes
+        video.setAttribute('role', 'button')
+        video.setAttribute('tabindex', '0')
+        video.setAttribute('aria-label', `Play video titled ${piece.title}`)
+
+        video.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter' || e.key === ' ') {
+            // eslint-disable-next-line no-undef
+            openCloseUpView(e)
+          }
+        })
+
         container.prepend(video)
         workContainer.appendChild(container)
       }
+
       if (piece.image) {
         const imgPath = '/assets/images/' + author.replace(' ', '%20') + '/' + piece.image
         const photo = document.createElement('div')
@@ -113,6 +156,19 @@ class Photographer {
         photo.setAttribute('data-category', 'picture')
         photo.setAttribute('data-title', piece.title)
         photo.style.backgroundImage = 'url(' + imgPath + ')'
+
+        // Add accessibility attributes
+        photo.setAttribute('role', 'img')
+        photo.setAttribute('tabindex', '0')
+        photo.setAttribute('aria-label', `Open image titled ${piece.title}`)
+
+        photo.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter' || e.key === ' ') {
+            // eslint-disable-next-line no-undef
+            openCloseUpView(e)
+          }
+        })
+
         container.prepend(photo)
         workContainer.appendChild(container)
       }
@@ -135,11 +191,22 @@ class Photographer {
     return totalOflikes
   }
 
-  sortByPopularity (work) {
+  sortWork (work, filter = 'popularité') {
     const workArray = Array.from(work)
+
+    // eslint-disable-next-line array-callback-return
     workArray.sort((a, b) => {
-      return b.likes - a.likes
+      if (filter === 'popularité') {
+        return b.likes - a.likes
+      } else if (filter === 'titre') {
+        return a.title.localeCompare(b.title)
+      } else if (filter === 'date') {
+        const dateA = new Date(a.date)
+        const dateB = new Date(b.date)
+        return dateB - dateA // Sort by descending date (newest first)
+      }
     })
+
     return workArray
   }
 }

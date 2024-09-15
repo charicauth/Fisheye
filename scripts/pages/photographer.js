@@ -3,11 +3,11 @@ const urlParams = new URLSearchParams(window.location.search)
 const profileName = urlParams.get('name')
 
 // eslint-disable-next-line no-undef
-const photographer = new Photographer(profileName)
+window.photographer = new Photographer(profileName)
 
 async function getPhotographerData () {
-  const photographerProfile = await photographer.profile
-  const photographerWork = await photographer.work
+  const photographerProfile = await window.photographer.profile
+  const photographerWork = await window.photographer.work
 
   const data = { profile: photographerProfile, work: photographerWork }
 
@@ -22,14 +22,17 @@ async function displayData (profile, work) {
   const price = document.getElementById('price-tag')
   const modal = document.getElementById('modalPhotographerName')
 
-  const profileInformations = photographer.displayProfile(profile)
-  const photographWork = photographer.displayWork(work)
+  const profileInformations = window.photographer.displayProfile(profile)
+  const photographWork = window.photographer.displayWork(work)
 
   photographerHeader.prepend(profileInformations)
   photographerWork.append(photographWork)
   profileImg.setAttribute('name', profile.name)
+  profileImg.setAttribute('role', 'img') // Define it as an image for screen readers
+  profileImg.setAttribute('aria-label', profile.name + "'s profile picture") // Add a descriptive label
+  profileImg.setAttribute('alt', profile.name + "'s profile picture") // For additional accessibility support
   profileImg.style.backgroundImage = 'url(../assets/photographers/' + profile.portrait + ')'
-  nbOfLikes.prepend(photographer.getTotalOfLikes(work))
+  nbOfLikes.prepend(window.photographer.getTotalOfLikes(work))
   price.textContent = profile.price + ' €/ Jour '
   modal.textContent = profile.name
 }
