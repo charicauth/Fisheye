@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 // eslint-disable-next-line no-unused-vars
 class Photographer {
   constructor (name) {
@@ -137,7 +138,7 @@ class Photographer {
         video.setAttribute('aria-label', `Play video titled ${piece.title}`)
 
         video.addEventListener('keydown', function (e) {
-          if (e.key === 'Enter' || e.key === ' ') {
+          if (e.key === 'Enter') {
             // eslint-disable-next-line no-undef
             openCloseUpView(e)
           }
@@ -163,7 +164,7 @@ class Photographer {
         photo.setAttribute('aria-label', `Open image titled ${piece.title}`)
 
         photo.addEventListener('keydown', function (e) {
-          if (e.key === 'Enter' || e.key === ' ') {
+          if (e.key === 'Enter') {
             // eslint-disable-next-line no-undef
             openCloseUpView(e)
           }

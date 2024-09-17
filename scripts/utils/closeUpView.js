@@ -6,6 +6,23 @@ const closeUpImgTitle = document.getElementById('closeUpImgTitle')
 const imgs = document.getElementsByClassName('photo-container')
 let index = 0
 
+// Add keyboard navigation for the "Escape" key to close the modal
+document.addEventListener('keydown', function (event) {
+  if (event.key === 'Escape' && closeUpView.style.display === 'flex') {
+    closeDialog() // Call the closeDialog function when Escape is pressed
+  }
+})
+// Add keyboard navigation for next/previous images
+document.addEventListener('keydown', function (event) {
+  if (closeUpView.style.display === 'flex') {
+    if (event.key === 'ArrowRight') {
+      nextImg() // Trigger nextImg() when the right arrow key is pressed
+    } else if (event.key === 'ArrowLeft') {
+      previousImg() // Trigger previousImg() when the left arrow key is pressed
+    }
+  }
+})
+
 function checkDummy () {
   const check = document.getElementById('dummy-child')
   if (check) {
@@ -33,6 +50,8 @@ function displayImg (index) {
 // eslint-disable-next-line no-unused-vars
 function closeDialog () {
   closeUpView.style.display = 'none'
+  // eslint-disable-next-line no-undef
+  releaseFocus()
 }
 
 // eslint-disable-next-line no-unused-vars

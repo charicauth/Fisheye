@@ -297,83 +297,116 @@ select option:checked {
 }
 
 
+/* Close-up view modal */
 #closeUpView {
-    display: none;
+    display: none; /* Hidden by default */
     position: fixed;
-    top: 0rem;
-    left: 0rem;
-    z-index: 2000;
-    background-color: white;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-
-    flex-flow: row nowrap;
+    background: rgba(255, 255, 255, 0.973); /* Semi-transparent background */
     justify-content: center;
     align-items: center;
-
+    z-index: 1000;
 }
 
-#closeUpImgView {
-    width: 100%;
-    padding-left: 6.5rem;
+.closeUpImgView {
     display: flex;
-    flex-flow: row nowrap;
     align-items: center;
-    justify-content: center;
-    height: 70vh;
-}
-
-.fa-x {
-    font-size: 2rem;
-    color: #901C1C;
-    margin-top: 6.5rem;
-    margin-right: 6.5rem;
-    margin-left: -2rem;
-}
-
-#previous, #next {
-    width: 10%;
-    font-size: 2rem;
-    color: #901C1C;
-    cursor: pointer;
-} 
-
-#previous:hover, #next:hover {
-    opacity: .5;
-}
-
-#next {
-    text-align: right;
-}
-
-#closeUpImg {
-    height: 100%;
-}
-
-#closeUpVideo {
-    width: 100%;
-}
-
-#closeUpVideo {
-    display: none;
+    justify-content: space-between;
+    max-width: 90%;
+    max-height: 90%;
+    position: relative;
 }
 
 .closeUpImg-container {
-    width: 80vw;
-    height: 90vh;
     display: flex;
-    flex-flow: column;
+    margin : auto 5rem;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); */
 }
 
-.closeDialog {
-    all: unset;
-    align-self: baseline;
+#closeUpImg, #closeUpVideo {
+    max-width: 100%;
+    max-height: 80vh;
+    border-radius: 8px;
 }
 
 .closeUpImgTitle {
+    margin-top: 10px;
+    font-size: 1.2rem;
+    color: #b22222; /* Change to a color that matches the design */
+    text-align: left;
     width: 100%;
-    align-self: flex-start;
-    color: #901C1C;
+    margin-top: 1.5rem;
+    cursor: default;
+}
+
+/* Navigation buttons */
+#previous, #next {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: #b22222;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+}
+
+#previous:hover, #next:hover, .closeDialog:hover{
+    color: #b222228e;
+}
+
+#previous {
+    left: -40px;
+}
+
+#next {
+    right: -40px;
+}
+
+/* Close button */
+.closeDialog {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: #b22222;
+    cursor: pointer;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    #previous {
+        left: -20px;
+    }
+
+    #next {
+        right: -20px;
+    }
+
+    .closeUpImg-container {
+        padding: 10px;
+    }
+
+    #closeUpImg, #closeUpVideo {
+        max-height: 60vh;
+    }
+}
+
+#closeModalButton {
+    border: none;
+    background: #ffffff00;
+    -webkit-appearance: none;
+    -moz-appearance: none;
 }
