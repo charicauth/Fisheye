@@ -95,7 +95,9 @@ class Photographer {
 
       const title = document.createElement('h2')
       const likes = document.createElement('p')
+      const likesCount = document.createElement('span')
       likes.setAttribute('data-liked', 'false')
+      likesCount.setAttribute('class', 'like-count')
 
       // Add aria-live for live updates on likes count
       likes.setAttribute('aria-live', 'polite')
@@ -114,8 +116,9 @@ class Photographer {
       heartIcon.setAttribute('onclick', 'like(event)')
 
       title.textContent = piece.title
-      likes.textContent = piece.likes
+      likesCount.textContent = piece.likes
 
+      likes.appendChild(likesCount)
       likes.appendChild(heartIcon)
       container.appendChild(title)
       container.appendChild(likes)

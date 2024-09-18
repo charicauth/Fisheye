@@ -21,27 +21,20 @@ photographerLikes.setAttribute('aria-live', 'polite')
 function like (event) {
   const heart = event.currentTarget
   const heartParent = heart.parentElement
-  const nbOfHearts = parseInt(heartParent.textContent)
+  const likesCountElement = heartParent.querySelector('.likes-count')
+  const nbOfHearts = parseInt(likesCountElement.textContent)
 
   // Toggle the like/unlike state
   if (heartParent.dataset.liked === 'true') {
     likesUpdate('dec')
-    heartParent.textContent = nbOfHearts - 1
-    const newHeart = cloneHeart(heart) // Create cloned heart
-    heartParent.appendChild(newHeart)
+    likesCountElement.textContent = nbOfHearts - 1
     heartParent.dataset.liked = 'false'
-    newHeart.setAttribute('aria-pressed', 'false')
-    newHeart.setAttribute('aria-label', 'Like this')
-    newHeart.focus() // Set focus to the new heart
+    heart.focus()
   } else if (heartParent.dataset.liked === 'false') {
     likesUpdate('inc')
-    heartParent.textContent = nbOfHearts + 1
-    const newHeart = cloneHeart(heart) // Create cloned heart
-    heartParent.appendChild(newHeart)
+    likesCountElement.textContent = nbOfHearts + 1
     heartParent.dataset.liked = 'true'
-    newHeart.setAttribute('aria-pressed', 'true')
-    newHeart.setAttribute('aria-label', 'Unlike this')
-    newHeart.focus() // Set focus to the new heart
+    heart.focus() // Set focus to the new heart
   }
 }
 
@@ -58,16 +51,4 @@ function likesUpdate (op) {
     photographerLikes.textContent = parseInt(photographerLikes.textContent) - 1
     photographerLikes.appendChild(icon)
   }
-}
-
-// Helper function to clone the heart icon and retain event listeners
-function cloneHeart (heart) {
-  const clonedHeart = heart.cloneNode(true)
-  clonedHeart.addEventListener('click', like)
-  clonedHeart.addEventListener('keydown', function (e) {
-    if (e.key === 'Enter') {
-      like(e)
-    }
-  })
-  return clonedHeart
 }
