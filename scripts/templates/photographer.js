@@ -22,7 +22,7 @@ function photographerTemplate (data) {
     photographerPrice.textContent = price + ' €/ Jour'
 
     profileInfoContainer.setAttribute('class', 'photographer-infos')
-    link.setAttribute('href', '/photographer.html?name=' + name)
+    link.setAttribute('href', './photographer.html?name=' + name)
     location.setAttribute('class', 'location')
     photographerTagline.setAttribute('class', 'photohrapher-tagline')
     photographerPrice.setAttribute('class', 'photographer-price')
