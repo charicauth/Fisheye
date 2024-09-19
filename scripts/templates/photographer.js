@@ -14,22 +14,27 @@ function photographerTemplate (data) {
     const location = document.createElement('h3')
     const photographerTagline = document.createElement('p')
     const photographerPrice = document.createElement('p')
+    const img = document.createElement('img')
 
     h2.textContent = name
     location.textContent = city + ', ' + country
     photographerTagline.textContent = tagline
     photographerPrice.textContent = price + ' €/ Jour'
-    imgContainer.style.backgroundImage = 'url(' + picture + ')'
 
     profileInfoContainer.setAttribute('class', 'photographer-infos')
     link.setAttribute('href', '/photographer.html?name=' + name)
     location.setAttribute('class', 'location')
     photographerTagline.setAttribute('class', 'photohrapher-tagline')
     photographerPrice.setAttribute('class', 'photographer-price')
+    imgContainer.setAttribute('class', 'profile-picture-container')
+    img.setAttribute('src', picture)
+    img.setAttribute('class', 'profile-picture')
+    img.setAttribute('alt', 'profile picture of' + name)
 
     profileInfoContainer.appendChild(location)
     profileInfoContainer.appendChild(photographerTagline)
     profileInfoContainer.appendChild(photographerPrice)
+    imgContainer.appendChild(img)
     link.appendChild(imgContainer)
     link.appendChild(h2)
     link.appendChild(profileInfoContainer)

@@ -3,7 +3,7 @@
 
 @media (max-width: 768px) {
     .photographer_section {
-        display: flex !important;
+        display: flex ;
         flex-direction: column;
         align-items: center;
         justify-content: center;
@@ -12,7 +12,6 @@
     }
     .photographer_section article {
         width: 100%;
-        justify-self: stretch !important;
     }
     header {
         flex-direction: column;
@@ -21,6 +20,7 @@
     header h1 {
         margin-top: 2rem;
         margin-bottom: 1rem !important;
+        text-align: center;
     }
 }
 
@@ -51,6 +51,7 @@ header {
     justify-content: space-between;
     align-items: center;
     min-height: 90px;
+    padding
 }
 
 h1 {
@@ -77,13 +78,15 @@ h1 {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    padding: 0 rem;
 }
 
 .photographer_section article a {
-    padding: none ;
+    padding: none;
     width: 100%;
     justify-self: center;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     flex-direction: column;
@@ -99,16 +102,23 @@ h1 {
 
     padding: 0px;
     border-radius: 100%;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
+}
 
+.profile-picture-container {
+    overflow: hidden;
+}
+
+.profile-picture {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .photographer_section article h2 {
     color: #D3573C;
     font-size: 2rem;
     text-align: center;
+    width: 100%;
     
 }
 

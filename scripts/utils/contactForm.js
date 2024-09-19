@@ -27,7 +27,9 @@ function closeModal () {
   releaseFocus() // Remove the focus trap
 
   // Return focus to the element that triggered the modal
+  // eslint-disable-next-line no-undef
   if (lastFocusedElement) {
+    // eslint-disable-next-line no-undef
     lastFocusedElement.focus()
   }
 }

@@ -1,3 +1,73 @@
+/* Responsive adjustments */
+@media (max-width: 1020px) {
+    body {
+        margin: 0rem 2rem !important;
+    }
+
+    .price_and_likes {
+        min-width: 16rem !important;
+    }
+
+    #work, #work div {
+        width: 100% !important;
+    }
+
+    .photo-container {
+        width: 100%;
+    }
+
+    .photo-container video {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+    }
+
+    .work-filter {
+        width: 100%;
+        display: flex !important;
+        flex-flow: column;
+        gap: 1rem;
+    }
+
+    .photograph-header {
+        padding: 2rem 0rem !important;
+        flex-flow: column !important;
+        height: auto !important;
+        gap: 3rem;
+    }
+    .profile-info {
+        width: 100%;
+        text-align: center !important;
+    }
+
+    .closeUpImg-container {
+        padding: 0px !important;
+        margin: 1rem !important;
+    }
+
+    .closeUpImgView {
+        position: relative !important;
+    }
+
+    #previous {
+        left: -20px !important;
+    }
+
+    #next {
+        right: -20px !important;
+    }
+
+    .closeUpImg-container {
+        padding: 10px;
+    }
+
+    #closeUpImg, #closeUpVideo {
+        max-height: 60vh;
+    }
+    
+}
+
+
 #contact_modal {
     display: none;
     width: 100vw; 
@@ -384,25 +454,6 @@ select option:checked {
     position: absolute;
     top: 20px;
     right: 20px;
-}
-
-/* Responsive adjustments */
-@media (max-width: 600px) {
-    #previous {
-        left: -20px;
-    }
-
-    #next {
-        right: -20px;
-    }
-
-    .closeUpImg-container {
-        padding: 10px;
-    }
-
-    #closeUpImg, #closeUpVideo {
-        max-height: 60vh;
-    }
 }
 
 #closeModalButton {

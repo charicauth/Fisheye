@@ -64,7 +64,6 @@ function openCloseUpView (event) {
 
   closeUpView.style.display = 'flex'
 
-
   if (elem.dataset.category === 'video') {
     closeUpImg.style.display = 'none'
     closeUpVideo.style.display = 'block'

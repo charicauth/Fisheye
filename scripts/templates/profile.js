@@ -97,7 +97,7 @@ class Photographer {
       const likes = document.createElement('p')
       const likesCount = document.createElement('span')
       likes.setAttribute('data-liked', 'false')
-      likesCount.setAttribute('class', 'like-count')
+      likesCount.setAttribute('class', 'likes-count')
 
       // Add aria-live for live updates on likes count
       likes.setAttribute('aria-live', 'polite')
