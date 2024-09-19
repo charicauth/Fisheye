@@ -37,15 +37,15 @@
 
       <div id="closeUpView" aria-label=”image-closeup-view”>
         <div class="closeUpImgView" id="closeUpImgView">
-          <a id="previous" name="previous-image" onclick="previousImg()"><i class="fa-solid fa-angle-left"></i></a>
+          <a id="previous" tabindex="0" name="previous-image" onclick="previousImg()"><i class="fa-solid fa-angle-left"></i></a>
           <div class="closeUpImg-container">
             <img id="closeUpImg">
             <video id="closeUpVideo"></video>
             <h2 id="closeUpImgTitle" class="closeUpImgTitle"></h2>
           </div>
-          <a id="next" name="next-image" onclick="nextImg()"><i class="fa-solid fa-angle-right"></i></a>
+          <a id="next" tabindex="0" name="next-image" onclick="nextImg()"><i class="fa-solid fa-angle-right"></i></a>
         </div>
-        <button class="closeDialog" name="closeDialog" onclick="closeDialog()">
+        <button class="closeDialog" tabindex="0" name="closeDialog" onclick="closeDialog()">
           <i class="fa-solid fa-x"></i>
         </button>
       </div>

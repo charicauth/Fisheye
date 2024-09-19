@@ -76,6 +76,7 @@ function openCloseUpView (event) {
     closeUpImg.setAttribute('src', elemUrl)
   }
   closeUpImgTitle.textContent = elem.dataset.title
+  trapFocus(closeUpView)
 }
 
 // eslint-disable-next-line no-unused-vars
