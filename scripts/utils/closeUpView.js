@@ -33,6 +33,7 @@ function checkDummy () {
 
 function displayImg (index) {
   const elem = imgs[index].children[0]
+  closeUpImgTitle.textContent = elem.dataset.title
   const elemUrl = elem.dataset.url
   if (elem.dataset.category === 'video') {
     closeUpImg.style.display = 'none'
