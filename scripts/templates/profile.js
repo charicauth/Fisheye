@@ -11,7 +11,7 @@ class Photographer {
   async getDataInformation (searchrequest) {
     try {
       // Update the path to '../data/photographers.json'
-      const response = await fetch('../data/photographers.json')
+      const response = await fetch('./data/photographers.json')
 
       if (!response.ok) {
         throw new Error(`Error: ${response.status}`)
@@ -124,7 +124,7 @@ class Photographer {
       container.appendChild(likes)
 
       if (piece.video) {
-        const imgPath = '/assets/images/' + author.replace(' ', '%20') + '/' + piece.video
+        const imgPath = './assets/images/' + author.replace(' ', '%20') + '/' + piece.video
         const video = document.createElement('video')
         video.setAttribute('onclick', 'openCloseUpView(event)')
         video.setAttribute('type', 'video/mp4')
@@ -152,7 +152,7 @@ class Photographer {
       }
 
       if (piece.image) {
-        const imgPath = '/assets/images/' + author.replace(' ', '%20') + '/' + piece.image
+        const imgPath = './assets/images/' + author.replace(' ', '%20') + '/' + piece.image
         const photo = document.createElement('div')
         photo.setAttribute('onclick', 'openCloseUpView(event)')
         photo.setAttribute('class', 'photo')

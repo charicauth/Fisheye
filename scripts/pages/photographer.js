@@ -31,7 +31,7 @@ async function displayData (profile, work) {
   profileImg.setAttribute('role', 'img') // Define it as an image for screen readers
   profileImg.setAttribute('aria-label', profile.name + "'s profile picture") // Add a descriptive label
   profileImg.setAttribute('alt', profile.name + "'s profile picture") // For additional accessibility support
-  profileImg.style.backgroundImage = 'url(../assets/photographers/' + profile.portrait + ')'
+  profileImg.style.backgroundImage = 'url(./assets/photographers/' + profile.portrait + ')'
   nbOfLikes.prepend(window.photographer.getTotalOfLikes(work))
   price.textContent = profile.price + ' €/ Jour '
   modal.textContent = profile.name

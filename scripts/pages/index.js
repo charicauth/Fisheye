@@ -1,7 +1,7 @@
 async function getPhotographers () {
   try {
     // Update the path to '../data/photographers.json'
-    const response = await fetch('../data/photographers.json')
+    const response = await fetch('./data/photographers.json')
 
     // Check if the request was successful (status code 200)
     if (!response.ok) {
