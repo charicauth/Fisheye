@@ -1,7 +1,7 @@
 /* Responsive adjustments */
-@media (max-width: 1020px) {
+@media (max-width: 1024px) {
     body {
-        margin: 0rem 2rem !important;
+        margin: 0rem 2rem !important;       
     }
 
     .price_and_likes {
@@ -64,8 +64,77 @@
     #closeUpImg, #closeUpVideo {
         max-height: 60vh;
     }
+
     
 }
+
+@media (max-width: 768px) {
+    #modalPhotographerName {
+        font-size: 3rem !important;
+    }
+    .modal {
+        width: 60% !important; /* Almost full width on mobile */
+    }
+
+    .modal header h2, #modalPhotographerName {
+        font-size: 1.5rem;
+        width: 100%;
+        text-align: center ;
+    }
+
+    form label {
+        font-size: 1.2rem;
+    }
+
+    form input, form textarea {
+        height: 45px;
+        font-size: 1rem;
+    }
+
+    .modal form button {
+        font-size: 1rem;
+        padding: 8px;
+        width: 100% !important;
+    }
+    
+    #contact_modal {
+        position: relative !important;
+        padding: ;
+    }
+
+    #closeModalButton {
+        position: absolute;
+        top: 10px !important;
+        right: 10px !important;
+        margin: .5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .modal {
+        padding: 1rem;
+        width: 95%;
+    }
+
+    .modal header h2 {
+        font-size: 1.3rem !important;
+    }
+
+    form label {
+        font-size: 1rem !important;
+    }
+
+    form input, form textarea {
+        height: 40px !important;
+        font-size: 0.9rem ;
+    }
+
+    button.contact_button {
+        font-size: 0.9rem;
+        padding: 7px;
+    }
+}
+
 
 
 #contact_modal {
