@@ -1,3 +1,5 @@
+import Photographer from '../templates/profile.js'
+
 const urlParams = new URLSearchParams(window.location.search)
 
 const profileName = urlParams.get('name')

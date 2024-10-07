@@ -23,6 +23,7 @@ document.addEventListener('keydown', function (event) {
   }
 })
 
+// checking if there's a dummy element
 function checkDummy () {
   const check = document.getElementById('dummy-child')
   if (check) {
@@ -77,6 +78,7 @@ function openCloseUpView (event) {
     closeUpImg.setAttribute('src', elemUrl)
   }
   closeUpImgTitle.textContent = elem.dataset.title
+  // eslint-disable-next-line no-undef
   trapFocus(closeUpView)
 }
 

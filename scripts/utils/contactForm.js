@@ -1,4 +1,27 @@
 /* eslint-disable no-unused-vars */
+
+// Get the form element and the button
+const contactForm = document.getElementById('contact_modal')
+
+// Add an event listener to the form submission
+contactForm.addEventListener('submit', function (event) {
+  // Prevent the default form submission (which reloads the page)
+  event.preventDefault()
+
+  // Gather the form values
+  const prenom = document.getElementById('prenom').value
+  const nom = document.getElementById('nom').value
+  const email = document.getElementById('email').value
+  const message = document.getElementById('message').value
+
+  // Log the form values
+  console.log('Prénom:', prenom)
+  console.log('Nom:', nom)
+  console.log('Email:', email)
+  console.log('Message:', message)
+})
+
+// Displays the contact form
 function displayModal () {
   const modal = document.getElementById('contact_modal')
   const main = document.getElementById('main')
@@ -13,7 +36,7 @@ function displayModal () {
   // eslint-disable-next-line no-undef
   trapFocus(modal)
 }
-
+// Closes the contact form
 function closeModal () {
   const modal = document.getElementById('contact_modal')
   const main = document.getElementById('main')
