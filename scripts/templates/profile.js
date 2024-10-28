@@ -82,121 +82,120 @@ export default class Photographer {
     return container
   }
 
-  // =================================================================
-  // Refactored displayWork function using the MediaFactory
-  // =================================================================
-  // displayWork (work, filter = 'popularité') {
-  //   const sortedWork = this.sortWork(work, filter)
+   /*displayWork (work, filter = 'popularité') {
+    const sortedWork = this.sortWork(work, filter)
 
-  //   const workContainer = document.createElement('div', { class: 'photo-container' })
-  //   const workDummyChildNb = work.length % 3
+    const workContainer = document.createElement('div', { class: 'photo-container' })
+    const workDummyChildNb = work.length % 3
 
-  //   sortedWork.forEach(piece => {
-  //     const container = document.createElement('div', { class: 'photo-container' })
-  //     container.setAttribute('class', 'photo-container')
-  //     container.setAttribute('data-date', piece.date)
+    sortedWork.forEach(piece => {
+      const container = document.createElement('div', { class: 'photo-container' })
+      container.setAttribute('class', 'photo-container')
+      container.setAttribute('data-date', piece.date)
 
-  //     const author = this.name.split(' ')[0].replace('-', ' ')
+      const author = this.name.split(' ')[0].replace('-', ' ')
 
-  //     const title = document.createElement('h2')
-  //     const likes = document.createElement('p')
-  //     const likesCount = document.createElement('span')
-  //     likes.setAttribute('data-liked', 'false')
-  //     likesCount.setAttribute('class', 'likes-count')
+      const title = document.createElement('h2')
+      const likes = document.createElement('p')
+      const likesCount = document.createElement('span')
+      likes.setAttribute('data-liked', 'false')
+      likesCount.setAttribute('class', 'likes-count')
 
-  //     // Add aria-live for live updates on likes count
-  //     likes.setAttribute('aria-live', 'polite')
+      // Add aria-live for live updates on likes count
+      likes.setAttribute('aria-live', 'polite')
 
-  //     const heartIcon = document.createElement('i')
-  //     heartIcon.setAttribute('class', 'fa-solid fa-heart')
-  //     heartIcon.setAttribute('role', 'button') // Add role button for screen readers
-  //     heartIcon.setAttribute('tabindex', '0') // Ensure it’s focusable by keyboard
-  //     heartIcon.setAttribute('aria-label', 'Like') // Add aria-label for accessibility
-  //     heartIcon.addEventListener('keydown', function (e) { // Support keyboard interactions
-  //       if (e.key === 'Enter') {
-  //         // eslint-disable-next-line no-undef
-  //         like(e)
-  //       }
-  //     })
-  //     heartIcon.setAttribute('onclick', 'like(event)')
+      const heartIcon = document.createElement('i')
+      heartIcon.setAttribute('class', 'fa-solid fa-heart')
+      heartIcon.setAttribute('role', 'button') // Add role button for screen readers
+      heartIcon.setAttribute('tabindex', '0') // Ensure it’s focusable by keyboard
+      heartIcon.setAttribute('aria-label', 'Like') // Add aria-label for accessibility
+      heartIcon.addEventListener('keydown', function (e) { // Support keyboard interactions
+        if (e.key === 'Enter') {
+          // eslint-disable-next-line no-undef
+          like(e)
+        }
+      })
+      heartIcon.setAttribute('onclick', 'like(event)')
 
-  //     title.textContent = piece.title
-  //     likesCount.textContent = piece.likes
+      title.textContent = piece.title
+      likesCount.textContent = piece.likes
 
-  //     likes.appendChild(likesCount)
-  //     likes.appendChild(heartIcon)
-  //     container.appendChild(title)
-  //     container.appendChild(likes)
+      likes.appendChild(likesCount)
+      likes.appendChild(heartIcon)
+      container.appendChild(title)
+      container.appendChild(likes)
 
-  //     if (piece.video) {
-  //       const imgPath = './assets/images/' + author.replace(' ', '%20') + '/' + piece.video
-  //       const video = document.createElement('video')
-  //       video.setAttribute('onclick', 'openCloseUpView(event)')
-  //       video.setAttribute('type', 'video/mp4')
-  //       video.setAttribute('class', 'video')
-  //       video.setAttribute('src', imgPath)
-  //       video.setAttribute('type', 'video/mp4')
-  //       video.setAttribute('data-url', imgPath)
-  //       video.setAttribute('data-category', 'video')
-  //       video.setAttribute('data-title', piece.title)
+      if (piece.video) {
+        const imgPath = './assets/images/' + author.replace(' ', '%20') + '/' + piece.video
+        const video = document.createElement('video')
+        video.setAttribute('onclick', 'openCloseUpView(event)')
+        video.setAttribute('type', 'video/mp4')
+        video.setAttribute('class', 'video')
+        video.setAttribute('src', imgPath)
+        video.setAttribute('type', 'video/mp4')
+        video.setAttribute('data-url', imgPath)
+        video.setAttribute('data-category', 'video')
+        video.setAttribute('data-title', piece.title)
 
-  //       // Add accessible video attributes
-  //       video.setAttribute('role', 'button')
-  //       video.setAttribute('tabindex', '0')
-  //       video.setAttribute('aria-label', `Play video titled ${piece.title}`)
+        // Add accessible video attributes
+        video.setAttribute('role', 'button')
+        video.setAttribute('tabindex', '0')
+        video.setAttribute('aria-label', `Play video titled ${piece.title}`)
 
-  //       video.addEventListener('keydown', function (e) {
-  //         if (e.key === 'Enter') {
-  //           // eslint-disable-next-line no-undef
-  //           openCloseUpView(e)
-  //         }
-  //       })
+        video.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter') {
+            // eslint-disable-next-line no-undef
+            openCloseUpView(e)
+          }
+        })
 
-  //       container.prepend(video)
-  //       workContainer.appendChild(container)
-  //     }
+        container.prepend(video)
+        workContainer.appendChild(container)
+      }
 
-  //     if (piece.image) {
-  //       const imgPath = './assets/images/' + author.replace(' ', '%20') + '/' + piece.image
-  //       const photo = document.createElement('div')
-  //       photo.setAttribute('onclick', 'openCloseUpView(event)')
-  //       photo.setAttribute('class', 'photo')
-  //       photo.setAttribute('data-url', imgPath)
-  //       photo.setAttribute('data-category', 'picture')
-  //       photo.setAttribute('data-title', piece.title)
-  //       photo.style.backgroundImage = 'url(' + imgPath + ')'
+      if (piece.image) {
+        const imgPath = './assets/images/' + author.replace(' ', '%20') + '/' + piece.image
+        const photo = document.createElement('div')
+        photo.setAttribute('onclick', 'openCloseUpView(event)')
+        photo.setAttribute('class', 'photo')
+        photo.setAttribute('data-url', imgPath)
+        photo.setAttribute('data-category', 'picture')
+        photo.setAttribute('data-title', piece.title)
+        photo.style.backgroundImage = 'url(' + imgPath + ')'
 
-  //       // Add accessibility attributes
-  //       photo.setAttribute('role', 'img')
-  //       photo.setAttribute('tabindex', '0')
-  //       photo.setAttribute('aria-label', `Open image titled ${piece.title}`)
+        // Add accessibility attributes
+        photo.setAttribute('role', 'img')
+        photo.setAttribute('tabindex', '0')
+        photo.setAttribute('aria-label', `Open image titled ${piece.title}`)
 
-  //       photo.addEventListener('keydown', function (e) {
-  //         if (e.key === 'Enter') {
-  //           // eslint-disable-next-line no-undef
-  //           openCloseUpView(e)
-  //         }
-  //       })
+        photo.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter') {
+            // eslint-disable-next-line no-undef
+            openCloseUpView(e)
+          }
+        })
 
-  //       container.prepend(photo)
-  //       workContainer.appendChild(container)
-  //     }
-  //   })
+        container.prepend(photo)
+        workContainer.appendChild(container)
+      }
+    })
 
-  //   if (workDummyChildNb === 2) {
-  //     const workDummyChild = document.createElement('div')
-  //     workDummyChild.setAttribute('class', 'photo-container')
-  //     workDummyChild.setAttribute('id', 'dummy-child')
-  //     workContainer.appendChild(workDummyChild)
-  //   }
+    if (workDummyChildNb === 2) {
+      const workDummyChild = document.createElement('div')
+      workDummyChild.setAttribute('class', 'photo-container')
+      workDummyChild.setAttribute('id', 'dummy-child')
+      workContainer.appendChild(workDummyChild)
+    }
 
-  //   return (workContainer)
-  // }
+    return (workContainer)
+  }*/
 
   // =================================================================
   // Refactored displayWork function using the MediaFactory
   // =================================================================
+  
   displayWork (work, filter = 'popularité') {
+    const workDummyChildNb = work.length % 3
     const sortedWork = this.sortWork(work, filter)
     const workContainer = document.createElement('div')
     workContainer.classList.add('photo-container')
@@ -218,8 +217,44 @@ export default class Photographer {
       title.textContent = piece.title
       container.appendChild(title)
 
+      const likes = document.createElement('p')
+      const likesCount = document.createElement('span')
+      likes.setAttribute('data-liked', 'false')
+      likesCount.setAttribute('class', 'likes-count')
+
+      // Add aria-live for live updates on likes count
+      likes.setAttribute('aria-live', 'polite')
+
+      const heartIcon = document.createElement('i')
+      heartIcon.setAttribute('class', 'fa-solid fa-heart')
+      heartIcon.setAttribute('role', 'button') // Add role button for screen readers
+      heartIcon.setAttribute('tabindex', '0') // Ensure it’s focusable by keyboard
+      heartIcon.setAttribute('aria-label', 'Like') // Add aria-label for accessibility
+      heartIcon.addEventListener('keydown', function (e) { // Support keyboard interactions
+        if (e.key === 'Enter') {
+          // eslint-disable-next-line no-undef
+          like(e)
+        }
+      })
+      heartIcon.setAttribute('onclick', 'like(event)')
+
+      title.textContent = piece.title
+      likesCount.textContent = piece.likes
+
+      likes.appendChild(likesCount)
+      likes.appendChild(heartIcon)
+      container.appendChild(title)
+      container.appendChild(likes)
+
       workContainer.appendChild(container)
     })
+
+    if (workDummyChildNb === 2) {
+      const workDummyChild = document.createElement('div')
+      workDummyChild.setAttribute('class', 'photo-container')
+      workDummyChild.setAttribute('id', 'dummy-child')
+      workContainer.appendChild(workDummyChild)
+    }
 
     return workContainer
   }
