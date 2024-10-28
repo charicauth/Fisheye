@@ -1,5 +1,5 @@
-    AC checker a corriger pour le feed 
-    Utiliser des articles au lieu des Div
+[*] AC checker a corriger pour le feed 
+[*] Utiliser des articles au lieu des Div
 [*] Afficher le contenu passé dans le formulaire dans la console + corriger le Bug
-    Commenter le code + (specifier l'utilité des fonction)
+[*] Commenter le code + (specifier l'utilité des fonction)
 [*] Pattern Factory

@@ -201,8 +201,15 @@ export default class Photographer {
     workContainer.classList.add('photo-container')
 
     sortedWork.forEach(piece => {
-      const container = document.createElement('div')
+      const container = document.createElement('article')
       container.classList.add('photo-container')
+      container.setAttribute('data-date', piece.date);
+      container.setAttribute('role', 'article');  // Accessibility role
+
+      // Accessibility: Associate title and description with article
+      container.setAttribute('tabindex', '0');  // Make focusable
+      container.setAttribute('aria-labelledby', `${piece.title}`)  // Link to title
+      container.setAttribute('aria-describedby', `${piece.title}`) // Link to description
 
       const author = this.name.split(' ')[0].replace('-', ' ')
 
