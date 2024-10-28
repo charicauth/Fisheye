@@ -16,6 +16,7 @@ export default class MediaFactory {
     const media = document.createElement('img')
     media.src = imgPath
     media.classList.add('media')
+    media.setAttribute('alt', piece.title)
     photo.classList.add('photo')
     photo.setAttribute('onclick', 'openCloseUpView(event)')
     photo.setAttribute('data-url', imgPath)
@@ -48,6 +49,7 @@ export default class MediaFactory {
     video.setAttribute('data-url', videoPath)
     video.setAttribute('data-category', 'video')
     video.setAttribute('data-title', piece.title)
+    video.setAttribute('alt', piece.title)
 
     // Accessibility
     video.setAttribute('role', 'button')
